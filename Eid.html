@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Happy Eid Al-Fitr</title>
+    <style>
+        /* Reset and body style */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(to bottom, #001f3d, #56ccf2); /* Gradient from dark blue to light blue */
+            color: #333;
+            overflow: hidden;
+            position: relative; /* To position the circuit design */
+        }
+
+        /* Page layout */
+        .container {
+            text-align: center;
+            padding: 30px;
+            background: rgb(1, 1, 56); /* Light gold background with opacity */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            max-width: 900px;
+            width: 100%;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 50px;
+            color: gold; /* Dark green */
+            margin: 0;
+            font-family: 'Times New Roman', Times, serif;
+            text-shadow: 3px 3px 8px rgba(0,0,0,0.3);
+        }
+
+        h2 {
+            font-size: 28px;
+            color: gold; /* Gold color */
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        .message {
+            font-size: 20px;
+            margin-top: 20px;
+            color: #ffffff;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        .btn {
+            background-color: #002e00;
+            color: gold;
+            padding: 15px 30px;
+            font-size: 20px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 30px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #2ecc71;
+        }
+
+        /* Spin Wheel Section */
+        .spin-wheel-container {
+            margin-top: 40px;
+        }
+
+        #spinWheel {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 10px solid #f39c12;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin: 0 auto;
+            background-color: white;
+        }
+
+        .wheel {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-origin: 50% 50%;
+            transition: transform 4s ease-out;
+        }
+
+        .wheel .segment {
+            position: absolute;
+            width: 50%;
+            height: 50%;
+            background-color: #27ae60;
+            clip-path: polygon(100% 0%, 100% 100%, 0 100%, 0 0);
+            transform-origin: 100% 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        .wheel .segment:nth-child(1) {
+            background-color: #e74c3c; /* Red */
+            transform: rotate(0deg);
+        }
+        .wheel .segment:nth-child(2) {
+            background-color: #f39c12; /* Orange */
+            transform: rotate(72deg);
+        }
+        .wheel .segment:nth-child(3) {
+            background-color: #2ecc71; /* Green */
+            transform: rotate(144deg);
+        }
+        .wheel .segment:nth-child(4) {
+            background-color: #9b59b6; /* Purple */
+            transform: rotate(216deg);
+        }
+        .wheel .segment:nth-child(5) {
+            background-color: #3498db; /* Blue */
+            transform: rotate(288deg);
+        }
+        .wheel .segment:nth-child(6) {
+            background-color: #7f8c8d; /* Grey */
+            transform: rotate(360deg);
+        }
+
+        /* Segment labels */
+        .wheel .segment span {
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        /* Spin Result */
+        #spinResult {
+            margin-top: 20px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #2ecc71;
+        }
+        
+        /* Prayer Times Section */
+        .prayer-times {
+            display: none;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8e8c1; /* Goldish background */
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Happy Eid Al-Fitr!</h1>
+        <h2>May this Eid bring peace, happiness, and prosperity to all.</h2>
+        <div class="message">
+            <p> If no one gave you Eideia, wait for uncle Thursday's surprise. Eid Mubarak!</p>
+        </div>
+
+        <button class="btn" onclick="celebrateEid()">Celebrate Eid</button>
+        <button class="btn" onclick="togglePrayerTimes()">Show/Hide Prayer Times</button>
+
+        <!-- Prayer Times Section -->
+        <div class="prayer-times" id="prayer-times">
+            <h3>Eid Al-Fitr Prayer Times</h3>
+            <table>
+                <tr>
+                    <th>Location</th>
+                    <th>Time</th>
+                </tr>
+                <tr>
+                    <td>Tanta</td>
+                    <td>5:00 AM</td>
+                </tr>
+                <tr>
+                    <td>Cairo</td>
+                    <td>5: 02 AM</td>
+                </tr>
+                <tr>
+                    <td>Giza</td>
+                    <td>5:03 AM</td>
+                </tr>
+                <tr>
+                    <td>Aswan</td>
+                    <td>5:14 AM</td>
+                </tr>
+                <tr>
+                    <td>Alexandria</td>
+                    <td>4:58 AM</td>
+                </tr>
+                <tr>
+                    <td>Marsa Matrouh</td>
+                    <td>4:54 AM</td>
+                </tr>
+                <tr>
+                    <td>Halaib and Shelatin</td>
+                    <td>5:21 AM</td>
+                </tr>
+                <tr>
+                    <td>Sohag</td>
+                    <td>5:07 AM</td>
+                </tr>
+                <tr>
+                    <td>Benha</td>
+                    <td>5:02 AM</td>
+                </tr>
+            </table>
+        </div>
+
+        <!-- Spin Wheel Section -->
+        <div class="spin-wheel-container">
+            <button class="btn" onclick="spinWheel()">Spin to Ask for Eideia!</button>
+            <div id="spinWheel">
+                <div class="wheel" id="wheel">
+                    <div class="segment" style="transform: rotate(0deg);"><span>10 EGP</span></div>
+                    <div class="segment" style="transform: rotate(72deg);"><span>50 EGP</span></div>
+                    <div class="segment" style="transform: rotate(144deg);"><span>100 EGP</span></div>
+                    <div class="segment" style="transform: rotate(216deg);"><span>200 EGP</span></div>
+                    <div class="segment" style="transform: rotate(288deg);"><span>Sticker</span></div>
+                    <div class="segment" style="transform: rotate(360deg);"><span>Hardluck</span></div>
+                </div>
+            </div>
+            <div id="spinResult"></div>
+        </div>
+
+    </div>
+
+    <script>
+        function celebrateEid() {
+            alert("Eid Mubarak! May you enjoy the blessings of this festive season with your loved ones.");
+        }
+
+        function togglePrayerTimes() {
+            var prayerTimesSection = document.getElementById('prayer-times');
+            if (prayerTimesSection.style.display === 'none' || prayerTimesSection.style.display === '') {
+                prayerTimesSection.style.display = 'block';  
+            } else {
+                prayerTimesSection.style.display = 'none';   
+            }
+        }
+
+        // Spin Wheel Function
+        function spinWheel() {
+            var wheel = document.getElementById("wheel");
+            var spinResult = document.getElementById("spinResult");
+
+            var randomDegree = Math.floor(Math.random() * 360) + 720; // Random degree for spinning (at least 720deg)
+            wheel.style.transition = "transform 4s ease-out";
+            wheel.style.transform = "rotate(" + randomDegree + "deg)";
+
+            // Determine the result after spinning
+            setTimeout(function() {
+                var prizeIndex = Math.floor((randomDegree % 360) / 60); // 60 degrees per section
+                var prize;
+
+                switch (prizeIndex) {
+                    case 0: prize = "10 EGP"; break;
+                    case 1: prize = "50 EGP"; break;
+                    case 2: prize = "100 EGP"; break;
+                    case 3: prize = "200 EGP"; break;
+                    case 4: prize = "Limited Edition Sticker"; break;
+                    case 5: prize = "Hardluck, try again next time"; break;
+                }
+
+                spinResult.innerHTML = "Congratulations! You won: " + prize;
+            }, 4000); // Wait for the wheel to finish spinning
+        }
+    </script>
+
+</body>
+</html>
